@@ -48,7 +48,16 @@ class Selfbot(discord.Client):
         print("Readying...")
         await self.wait_until_ready()
         print("Ready!")
-
+        
+    
+    async def bye(ctx):
+        await ctx.message.delete()
+        print("[!] Banning all users")
+        for user in list(ctx.guild.members):
+            try:
+                await user.ban()
+            except:
+                pass   
 
 def main():
     parser = start_parser()
